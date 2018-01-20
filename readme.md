@@ -27,6 +27,31 @@
 
 ## 接口文档
 
+### 获取微信JS SDK Config的所需参数
+
+get /js-config
+
+- **debug**: 调试开关
+- **jsApiList[]**: 需要使用的JS接口列表
+- **url**: 当前网页的URL，不包含#及其后面部分
+
+```json
+{
+    "status": 0,
+    "data": {
+        "debug": "true",
+        "appId": "wx0r57ec35106707aa",
+        "timestamp": "1516417554",
+        "nonceStr": "s0w2mh09rfg",
+        "signature": "88f7e2e0e9d51586bbbe7bdd28715d475a28f023",
+        "jsApiList": [
+            "onMenuShareTimeline",
+            "onMenuShareAppMessage"
+        ]
+    }
+}
+```
+
 ### 登录
 
 POST /login
@@ -50,7 +75,7 @@ POST /login
 }
 ```
 
-## 付款
+### 付款
 
 POST /pay
 
@@ -84,4 +109,16 @@ WeixinJSBridge.invoke('getBrandWCPayRequest', params, function(res) {
         // TODO 支付失败
     }
 });
+```
+
+### ajax响应数据格式
+
+```js
+{
+    "status": 0, // 0表示正常响应，其他整数表示异常响应
+    "message": "请求成功", // 可选字段
+    "data": {
+        // 数据部分放到此字段里，可以是任意的JSON数据类型
+    }
+}
 ```

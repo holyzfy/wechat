@@ -23,6 +23,7 @@
     "moment": "~2.20.1",
     "npm": "~5.6.0",
     "validate-commit-msg": "~2.14.0",
+    "wechat-api": "~1.35.1",
     "wechat-oauth": "~1.2.1",
     "wechat-pay": "~0.3.2"
   }
