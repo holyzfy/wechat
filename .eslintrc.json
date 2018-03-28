@@ -11,7 +11,7 @@
     "rules": {
         "strict": ["error", "global"],
         "semi": "error",
-        "quotes": ["warn", "single"],
+        "quotes": ["warn", "single", {"allowTemplateLiterals": true}],
         "eqeqeq":  ["warn"],
         "no-alert": "error",
         "curly": ["error", "all"],
@@ -26,7 +26,7 @@
         "no-eval": ["error"],
         "no-caller": ["error"],
         "no-else-return": ["warn"],
-        "no-console": ["warn"],
+        "no-console": "off",
         "default-case": ["error"],
         "no-with": ["error"],
         "no-array-constructor": ["error"],
