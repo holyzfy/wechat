@@ -24,8 +24,9 @@
         "notifyUrl": "通知地址，异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数"
     }
     ```
-
-3. 运行 `node index.js`启动服务
+3. 修改 `demo/index.html` 第14行的`appid`
+4. 修改 `js/index.js` 第7行的`apiRoot`
+5. 运行 `node index.js`启动服务
 
 ## 接口文档
 
