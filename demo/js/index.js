@@ -53,41 +53,17 @@ function initApp(user) {
         },
         methods: {
             pay: function (pid) {
-                pay(pid, this.user.openid);
+                pay({
+                    pid: pid,
+                    openid: this.user.openid,
+                    attach: '自定义数据'
+                });
             }
         }
     });
 }
 
-// @param pid
-// @return {body, fee}
-function getProduct(pid) {
-    // 此接口应该在服务端实现，这里纯演示
-    var shop = '迪兰朵美体馆';
-    var map = {
-        '111': '面部补水',
-        '112': '颈肩调理',
-        '113': '泥炙养生'
-    };
-    var title = map[pid] || '无描述';
-    var body = shop + '-' + title;
-
-    var feeMap = {
-        '111': 1,
-        '112': 2,
-        '113': 3
-    };
-    var fee = feeMap[pid] || 0;
-
-    return {
-        body: body,
-        fee: fee
-    };
-}
-
-function pay(pid, openid) {
-    var params = getProduct(pid);
-    params.openId = openid;
+function pay(params) {
     $.post(apiRoot + '/pay', params, function (result) {
         if(result.status !== 0) {
             return handleError(result.message);
@@ -103,11 +79,10 @@ function pay(pid, openid) {
     });
 }
 
-function share(pid, tradeNumber) {
-    var detail = getProduct(pid);
+function share(pid, outTradeNo) {
     var params = {
-        title: '我购买了' + detail.body,
-        desc: '订单号' + tradeNumber,
+        title: '我购买了商品ID=' + pid,
+        desc: '订单号' + outTradeNo,
         link: location.href.split('#')[0],
         // imgUrl: '',
         success: function () {

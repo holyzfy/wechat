@@ -114,6 +114,12 @@ WeixinJSBridge.invoke('getBrandWCPayRequest', params, function(res) {
 });
 ```
 
+### 支付结果通知
+
+POST /notify
+
+接口文档 https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_7&index=8
+
 ### ajax响应数据格式
 
 ```js
